@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supabase Vanilla App</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Supabase Demo</h1>
+      <div id="user-info" class="hidden">
+        <span id="user-email"></span>
+        <button id="btn-logout" tabindex="">Log Out</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Auth Section -->
+      <section id="auth-section">
+        <h2>Authentication</h2>
+        <form id="auth-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required tabindex="1" autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required tabindex="2" autocomplete="current-password" />
+          </div>
+          <div class="button-group">
+            <button type="submit" id="btn-login" tabindex="3">Log In</button>
+            <button type="button" id="btn-signup" tabindex="4">Sign Up</button>
+          </div>
+          <div id="auth-error" class="error" role="alert" aria-live="assertive"></div>
+        </form>
+      </section>
+
+      <!-- App Section -->
+      <section id="app-section" class="hidden">
+        <nav class="tabs" role="tablist">
+          <button id="tab-notes-btn" class="tab-btn active" role="tab" tabindex="5" aria-controls="tab-notes" aria-selected="true">Notes</button>
+          <button id="tab-arch-btn" class="tab-btn" role="tab" tabindex="6" aria-controls="tab-arch" aria-selected="false">Architecture</button>
+        </nav>
+
+        <!-- Notes Tab -->
+        <div id="tab-notes" class="tab-content" role="tabpanel" aria-labelledby="tab-notes-btn">
+          <form id="note-form">
+            <div class="form-group">
+              <label for="note-input">New Note</label>
+              <textarea id="note-input" rows="3" tabindex="7"></textarea>
+            </div>
+            <div id="note-counter" class="note-counter" aria-live="polite">0/280</div>
+            <button type="submit" tabindex="8">Add Note</button>
+            <div id="note-error" class="error" role="alert" aria-live="assertive"></div>
+          </form>
+          
+          <ul id="notes-list" tabindex="9" aria-label="List of notes"></ul>
+        </div>
+
+        <!-- Architecture Tab -->
+        <div id="tab-arch" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-arch-btn">
+          <div class="architecture-layout">
+            <div class="diagram" role="group" aria-label="Supabase Architecture Diagram">
+              <button class="arch-node" data-node="client" tabindex="0">Client</button>
+              <div class="arrow">↓</div>
+              <button class="arch-node" data-node="kong" tabindex="0">Kong Gateway</button>
+              <div class="arrow">↓</div>
+              <div class="arch-services">
+                <button class="arch-node" data-node="auth" tabindex="0">Auth</button>
+                <button class="arch-node" data-node="rest" tabindex="0">PostgREST</button>
+                <button class="arch-node" data-node="realtime" tabindex="0">Realtime</button>
+                <button class="arch-node" data-node="storage" tabindex="0">Storage</button>
+              </div>
+              <div class="arrow">↓</div>
+              <button class="arch-node" data-node="postgres" tabindex="0">Postgres DB</button>
+            </div>
+            <div class="details-panel" aria-live="polite">
+              <h3 id="arch-title">Select a component</h3>
+              <p id="arch-desc">Click a component on the left to see its role and underlying technology.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

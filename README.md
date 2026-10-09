@@ -9,7 +9,7 @@ This project analyzes the architecture of **Supabase**, an open-source backend p
 
 **Prototype:** A notes app (Vite + vanilla JavaScript + `supabase-js`) with email/password auth, per-user notes protected by Row Level Security, live updates via Realtime Postgres Changes, and an interactive "Architecture" tab explaining each component.
 
-- **Live site:** [your Vercel URL]
+- **Live site:** https://supabase-architecture-explorer-9kydkit2v-eric-537c.vercel.app/
 
 ## Setup & Run Instructions
 1. Clone the repo:
